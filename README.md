@@ -1,1 +1,0 @@
-对比kafka和rocketmq的一些特性
