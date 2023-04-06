@@ -1,28 +1,4 @@
-<!-- Output copied to clipboard! -->
-
-<!-----
-
-Yay, no errors, warnings, or alerts!
-
-Conversion time: 0.701 seconds.
-
-
-Using this Markdown file:
-
-1. Paste this output into your source file.
-2. See the notes and action items below regarding this conversion run.
-3. Check the rendered output (headings, lists, code blocks, tables) for proper
-   formatting and use a linkchecker before you publish this page.
-
-Conversion notes:
-
-* Docs to Markdown version 1.0β34
-* Thu Apr 06 2023 01:54:59 GMT-0700 (PDT)
-* Source doc: 无标题文档
-* Tables are currently converted to HTML tables.
------>
-
-
+# kafka-vs-rocketmq
 * 总结：rocketmq比kafka提供更丰富的功能，如消息重试、限流、延迟（定时）消息、消息轨迹等。可以尝试更多使用
 
 
