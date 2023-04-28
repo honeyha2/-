@@ -1,6 +1,4 @@
 # kafka vs rocketmq
-* 总结：rocketmq比kafka提供更丰富的功能，如消息重试、限流、延迟（定时）消息、消息轨迹等。可以尝试更多使用
-
 
 <table>
   <tr>
