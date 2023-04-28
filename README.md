@@ -1,5 +1,4 @@
 # kafka vs rocketmq
-
 <table>
   <tr>
    <td>
