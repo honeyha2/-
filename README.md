@@ -156,7 +156,7 @@
   <tr>
    <td>manualCommit模式
    </td>
-   <td>需要保证最终一定能提交offset，如果consumer抛异常/死循环导致某条消息A的offset无法提交，consumer会继续拉取100批消息消费，此时还未提交消息A的offset，consumer会停止拉取消息。此时broker端offset只提交到A之前。
+   <td>需要保证最终一定能提交offset，如果consumer抛异常/死循环导致某条消息A的offset无法提交，consumer会继续拉取100批消息消费，此时还未提交消息A的offset，consumer会停止拉取消息，此时broker端offset只提交到A之前。这是为了保证分区内的顺序性
 <p>
 autoCommit模式下，只要能poll到消息就会提交offset，不管实际消费情况
    </td>
