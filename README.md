@@ -42,9 +42,9 @@
    </td>
    <td>会。
 <p>
-默认autoCommit模式，即atMostOnce，consumer宕机可能导致消息丢失。
+默认autoCommit模式，即atMostOnce，在poll消息时会顺带提交offset，consumer宕机可能导致消息丢失。
 <p>
-若指定atLeastOnce或manualCommit模式，不会丢失消息。
+若指定atLeastOnce或manualCommit模式，不会丢失消息，atLeastOnce会在consume逻辑结束后提交offset。
    </td>
    <td>不会。
 <p>
@@ -62,7 +62,7 @@
   <tr>
    <td>消费超时
    </td>
-   <td>两次拉取消息的时间间隔超过max.poll.interval.ms（默认5min），broker会认为消费者进程超时，触发rebalance。
+   <td>程序陷入死循环，会导致worker线程池满，无法继续poll消息。两次拉取消息的时间间隔超过max.poll.interval.ms（默认5min），broker会认为消费者进程超时，触发rebalance。
 <p>
 可以通过控制maxPollRecords（每次拉取的数据量，默认100）来缓解这类问题。
    </td>
@@ -156,7 +156,7 @@
   <tr>
    <td>manualCommit模式
    </td>
-   <td>需要保证最终一定能提交offset，如果consumer抛异常/死循环导致某条消息A的offset无法提交，consumer会继续拉取100批消息消费，此时还未提交消息A的offset，consumer会停止拉取消息，此时broker端offset只提交到A之前。这是为了保证分区内的顺序性。
+   <td>需要保证最终一定能提交offset，如果consumer抛异常导致某条消息A的offset无法提交，consumer会继续拉取100批消息但并不消费，如果100批后还未提交消息A的offset，consumer会停止拉取消息，随后触发rebalance被剔除，此时broker端offset只提交到A之前。这样保证了分区内的顺序性，防止某条消息卡死，其他的还一直在消费。
 <p>
 autoCommit模式下，只要能poll到消息就会提交offset，不管实际消费情况
    </td>
