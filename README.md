@@ -156,7 +156,7 @@
   <tr>
    <td>manualCommit模式
    </td>
-   <td>需要保证最终一定能提交offset，如果consumer抛异常/死循环导致某条消息A的offset无法提交，consumer会继续拉取100批消息消费，此时还未提交消息A的offset，consumer会停止拉取消息。
+   <td>需要保证最终一定能提交offset，如果consumer抛异常/死循环导致某条消息A的offset无法提交，consumer会继续拉取100批消息消费，此时还未提交消息A的offset，consumer会停止拉取消息。autoCommit模式下，只要能拉倒消息，就会提交offset，不管实际消费情况
    </td>
    <td>consumer抛异常，框架会以Later方式提交offset，这种情况下位点能正常提交，但这条消息稍后会重新投递16次。
 <p>
