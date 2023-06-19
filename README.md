@@ -1,5 +1,5 @@
 # kafka vs rocketmq
-- 结论：kafka胜在吞吐量大，rocketmq比kafka提供更丰富的功能，如支持分布式事务、延迟（定时）消息、消息轨迹等
+- 结论：kafka胜在吞吐量大，rocketmq比kafka提供更丰富的功能，如支持分布式事务、延迟（定时）消息、广播消费、消息过滤、消息轨迹等
 <table>
   <tr>
    <td>
